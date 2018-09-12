@@ -14,7 +14,6 @@ build:
   number: 200
   features:
     - blas_{{ variant }}
-  skip: true  # [win]
 
 requirements:
   build:
