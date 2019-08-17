@@ -13,7 +13,8 @@ do
     -DBLAS_LIBRARIES="-lblas" \
     -DCMAKE_AR="${AR}" \
     -DCMAKE_RANLIB="${RANLIB}" \
-    ..
+    --debug-try-compile \
+    .. || (cat CMakeFiles/FortranCInterface/VerifyC/VerifyFortran.h && nm -g CMakeFiles/FortranCInterface/VerifyC/libVerifyFortran.a && exit 1)
 
   make install -j${CPU_COUNT}
 done
