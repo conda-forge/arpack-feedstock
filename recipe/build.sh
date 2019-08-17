@@ -7,6 +7,7 @@ export FC
 if [[ "$target_platform" == osx* ]]; then
   # gfortran is broken on conda. Not sure why
   export FFLAGS="$FFLAGS -B$BUILD_PREFIX/bin"
+  export FCFLAGS="$FCFLAGS -B$BUILD_PREFIX/bin"
   #echo "SET_TARGET_PROPERTIES(FortranCInterface PROPERTIES LINKER_LANGUAGE C)" >> $BUILD_PREFIX/share/cmake-*/Modules/FortranCInterface/CMakeLists.txt 
 fi
 
