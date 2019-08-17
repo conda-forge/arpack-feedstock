@@ -1,7 +1,3 @@
-<!--
-# -*- mode: jinja -*-
--->
-
 About arpack
 ============
 
@@ -18,9 +14,63 @@ Summary: Fortran77 subroutines designed to solve large scale eigenvalue problems
 Current build status
 ====================
 
-[![Linux](https://img.shields.io/circleci/project/github/conda-forge/arpack-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/arpack-feedstock)
-[![OSX](https://img.shields.io/travis/conda-forge/arpack-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/arpack-feedstock)
-[![Windows](https://img.shields.io/appveyor/ci/conda-forge/arpack-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/arpack-feedstock/branch/master)
+
+<table><tr>
+    <td>Appveyor</td>
+    <td>
+      <a href="https://ci.appveyor.com/project/conda-forge/arpack-feedstock/branch/master">
+        <img alt="windows" src="https://img.shields.io/appveyor/ci/conda-forge/arpack-feedstock/master.svg?label=Windows">
+      </a>
+    </td>
+  </tr>
+    
+  <tr>
+    <td>Azure</td>
+    <td>
+      <details>
+        <summary>
+          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=52&branchName=master">
+            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arpack-feedstock?branchName=master">
+          </a>
+        </summary>
+        <table>
+          <thead><tr><th>Variant</th><th>Status</th></tr></thead>
+          <tbody><tr>
+              <td>linux</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=52&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arpack-feedstock?branchName=master&jobName=linux&configuration=linux_" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_fortran_compiler_version4</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=52&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arpack-feedstock?branchName=master&jobName=osx&configuration=osx_fortran_compiler_version4" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_fortran_compiler_version7</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=52&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arpack-feedstock?branchName=master&jobName=osx&configuration=osx_fortran_compiler_version7" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=52&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arpack-feedstock?branchName=master&jobName=win&configuration=win_" alt="variant">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </details>
+    </td>
+  </tr>
+![ppc64le disabled](https://img.shields.io/badge/ppc64le-disabled-lightgrey.svg)
+</table>
 
 Current release info
 ====================
