@@ -8,7 +8,6 @@ if [[ "$target_platform" == osx* ]]; then
   # Make gfortran use `ld64` from conda.
   ln -s $LD $BUILD_PREFIX/bin/ld
   export FFLAGS="$FFLAGS -B$BUILD_PREFIX/bin -v"
-  export FCFLAGS="$FCFLAGS -B$BUILD_PREFIX/bin -v"
 fi
 
 for shared_libs in OFF ON
