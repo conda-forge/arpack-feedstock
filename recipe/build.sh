@@ -14,7 +14,9 @@ do
     -DCMAKE_AR="${AR}" \
     -DCMAKE_RANLIB="${RANLIB}" \
     --debug-try-compile \
-    .. || (cat CMakeFiles/FortranCInterface/VerifyC/VerifyFortran.h && nm -g CMakeFiles/FortranCInterface/VerifyC/libVerifyFortran.a && exit 1)
+    .. || (cat CMakeFiles/FortranCInterface/VerifyC/VerifyFortran.h && \
+     nm -g CMakeFiles/FortranCInterface/VerifyC/libVerifyFortran.a && \
+     cat CMakeFiles/CMakeOutput.log && CMakeFiles/CMakeError.log && exit 1)
 
   make install -j${CPU_COUNT}
 done
