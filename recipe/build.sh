@@ -11,6 +11,8 @@ do
     -DBUILD_SHARED_LIBS=${shared_libs} \
     -DLAPACK_LIBRARIES="-llapack" \
     -DBLAS_LIBRARIES="-lblas" \
+    -DCMAKE_AR="${AR}" \
+    -DCMAKE_RANLIB="${RANLIB}" \
     ..
 
   make install -j${CPU_COUNT}
