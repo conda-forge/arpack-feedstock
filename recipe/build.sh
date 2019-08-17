@@ -2,6 +2,11 @@
 
 mkdir build && cd build
 
+if [[ "$target_platform" == osx* ]]; then
+  # gfortran is broken on conda. Not sure why
+  echo "SET_TARGET_PROPERTIES(FortranCInterface PROPERTIES LINKER_LANGUAGE C)" >> $BUILD_PREFIX/share/cmake-*/Modules/FortranCInterface/CMakeLists.txt 
+fi
+
 for shared_libs in OFF ON
 do
   cmake \
