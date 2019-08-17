@@ -16,7 +16,7 @@ do
     --debug-try-compile \
     .. || (cat CMakeFiles/FortranCInterface/VerifyC/VerifyFortran.h && \
      nm -g CMakeFiles/FortranCInterface/VerifyC/libVerifyFortran.a && \
-     cat CMakeFiles/CMakeOutput.log && cat CMakeFiles/CMakeError.log && exit 1)
+     cat CMakeFiles/CMakeOutput.log && cat CMakeFiles/CMakeError.log && grep -Iir "system_stats" && exit 1)
 
   make install -j${CPU_COUNT}
 done
