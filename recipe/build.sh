@@ -4,10 +4,12 @@ mkdir build && cd build
 
 export FC
 
-if [[ "$target_platform" == osx* ]]; then
-  # Make gfortran use `ld64` from conda.
-  ln -s $LD $BUILD_PREFIX/bin/ld
-  export FFLAGS="$FFLAGS -B$BUILD_PREFIX/bin -v"
+if [[ "$target_platform" == "osx-64" ]]; then
+  # This is fixed in gfortran 7, but not 4
+  TOOLS_DIR=$(dirname $($FC --print-libgcc-file-name))
+  if [[ ! -f "$TOOLS_DIR/ld" ]]; then
+    ln -sf $LD $TOOLS_DIR/ld
+  fi
 fi
 
 for shared_libs in OFF ON
