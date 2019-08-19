@@ -10,6 +10,7 @@ if [[ "$target_platform" == "osx-64" ]]; then
   if [[ ! -f "$TOOLS_DIR/ld" ]]; then
     ln -sf $LD $TOOLS_DIR/ld
   fi
+  ls -al $TOOLS_DIR
 fi
 
 for shared_libs in OFF ON
