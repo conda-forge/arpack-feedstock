@@ -1,6 +1,7 @@
 
 : remove sh.exe from PATH
 set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
+set PATH=%PATH:C:\Program Files\Git\bin;=%
 
 mkdir build && cd build
 
