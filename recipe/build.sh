@@ -9,8 +9,8 @@ if [[ "$target_platform" == "osx-64" ]]; then
   TOOLS_DIR=$(dirname $($FC --print-libgcc-file-name))
   if [[ ! -f "$TOOLS_DIR/ld" ]]; then
     ln -sf $LD $TOOLS_DIR/ld
+    ln -sf $LD $BUILD_PREFIX/bin/ld
   fi
-  ls -al $TOOLS_DIR
 fi
 
 for shared_libs in OFF ON
