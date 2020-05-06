@@ -18,6 +18,7 @@ build:
 requirements:
   build:
     - cmake
+    - make  # [ppc64le]
     - {{ compiler('fortran') }}  # [unix]
     - {{ compiler('c') }}  # [unix]
     - {{ compiler('cxx') }}  # [unix]
