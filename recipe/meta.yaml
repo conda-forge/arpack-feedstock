@@ -5,11 +5,9 @@ package:
   version: {{ version }}
 
 source:
-  fn: arpack-{{ version }}.tar.gz
   url: https://github.com/opencollab/arpack-ng/archive/{{ version }}.tar.gz
   sha256: ada5aeb3878874383307239c9235b716a8a170c6d096a6625bfd529844df003d
-  patches:
-    - comlexi.patch
+
 build:
   number: 0
   run_exports:
@@ -18,7 +16,7 @@ build:
 requirements:
   build:
     - cmake
-    - make  # [ppc64le]
+    - make  # [unix]
     - {{ compiler('fortran') }}  # [unix]
     - {{ compiler('c') }}  # [unix]
     - {{ compiler('cxx') }}  # [unix]
