@@ -15,6 +15,6 @@ do
     -DCMAKE_RANLIB="${RANLIB}" \
     -DICB=ON \
     ..
-  make install -j${CPU_COUNT}
+  make install -j${CPU_COUNT} VERBOSE=1
 done
 ctest --output-on-failure -j${CPU_COUNT}
