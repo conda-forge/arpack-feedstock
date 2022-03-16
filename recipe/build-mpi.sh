@@ -1,7 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
 set -x
 
+rm -rfv build
 mkdir build && cd build
 
 if [[ "$(echo $fortran_compiler_version | cut -d '.' -f 1)" -gt 9 ]]; then
@@ -18,6 +19,7 @@ do
     -DLAPACK_LIBRARIES="-llapack" \
     -DBLAS_LIBRARIES="-lblas" \
     -DICB=ON \
+    -DMPI=ON \
     ..
   make install -j${CPU_COUNT} VERBOSE=1
 done

@@ -1,43 +1,74 @@
-{% set version = "3.7.0" %}
+{% set version = "3.8.0" %}
 
 package:
-  name: arpack
+  name: arpack-suite
   version: {{ version }}
 
 source:
   fn: arpack-{{ version }}.tar.gz
   url: https://github.com/opencollab/arpack-ng/archive/{{ version }}.tar.gz
-  sha256: 972e3fc3cd0b9d6b5a737c9bf6fd07515c0d6549319d4ffb06970e64fa3cc2d6
-  patches:
-    - comlexi.patch
+  sha256: ada5aeb3878874383307239c9235b716a8a170c6d096a6625bfd529844df003d
+
 build:
-  number: 2
-  run_exports:
-    - {{ pin_subpackage('arpack', max_pin='x.x') }}
+  number: 0
 
-requirements:
-  build:
-    - cmake
-    - make  # [unix]
-    - {{ compiler('fortran') }}  # [unix]
-    - {{ compiler('c') }}  # [unix]
-    - {{ compiler('cxx') }}  # [unix]
-    - {{ compiler('m2w64_fortran') }}  # [win]
-    - {{ compiler('m2w64_c') }}  # [win]
-    - {{ compiler('m2w64_cxx') }}  # [win]
-  host:
-    - libblas
-    - liblapack
+outputs:
+  - name: arpack
+    script: build-no-mpi.sh  # [not win]
+    script: bld-no-mpi.bat  # [win]
+    build:
+      run_exports:
+        - {{ pin_subpackage('arpack', max_pin='x.x') }}
+    requirements:
+      build:
+        - cmake
+        - make  # [unix]
+        - {{ compiler('fortran') }}  # [unix]
+        - {{ compiler('c') }}  # [unix]
+        - {{ compiler('cxx') }}  # [unix]
+        - {{ compiler('m2w64_fortran') }}  # [win]
+        - {{ compiler('m2w64_c') }}  # [win]
+        - {{ compiler('m2w64_cxx') }}  # [win]
+      host:
+        - libblas
+        - liblapack
+    test:
+      commands:
+        - test -f ${PREFIX}/lib/libarpack.a  # [unix]
+        - test -f ${PREFIX}/lib/libarpack${SHLIB_EXT}  # [unix]
+        - test -f ${PREFIX}/include/arpack/arpack.hpp  # [unix]
+        - if not exist %PREFIX%\\Library\\mingw-w64\\lib\\libarpack.a exit 1  # [win]
+        - if not exist %PREFIX%\\Library\\mingw-w64\\lib\\libarpack.dll.a exit 1  # [win]
+        - if not exist %PREFIX%\\Library\\mingw-w64\\bin\\libarpack.dll exit 1  # [win]
+        - if not exist %PREFIX%\\Library\\mingw-w64\\include\\arpack\\arpack.hpp exit 1  # [win]
 
-test:
-  commands:
-    - test -f ${PREFIX}/lib/libarpack.a  # [unix]
-    - test -f ${PREFIX}/lib/libarpack${SHLIB_EXT}  # [unix]
-    - test -f ${PREFIX}/include/arpack/arpack.hpp  # [unix]
-    - if not exist %PREFIX%\\Library\\mingw-w64\\lib\\libarpack.a exit 1  # [win]
-    - if not exist %PREFIX%\\Library\\mingw-w64\\lib\\libarpack.dll.a exit 1  # [win]
-    - if not exist %PREFIX%\\Library\\mingw-w64\\bin\\libarpack.dll exit 1  # [win]
-    - if not exist %PREFIX%\\Library\\mingw-w64\\include\\arpack\\arpack.hpp exit 1  # [win]
+  - name: arpack-mpi
+    script: build-mpi.sh  # [not win]
+    build:
+      skip: true  # [win or (osx and arm64)]
+      run_exports:
+        - {{ pin_subpackage('arpack-mpi', max_pin='x.x') }}
+    requirements:
+      build:
+        - cmake
+        - make  # [unix]
+        - {{ compiler('fortran') }}  # [unix]
+        - {{ compiler('c') }}  # [unix]
+        - {{ compiler('cxx') }}  # [unix]
+        - {{ compiler('m2w64_fortran') }}  # [win]
+        - {{ compiler('m2w64_c') }}  # [win]
+        - {{ compiler('m2w64_cxx') }}  # [win]
+      host:
+        - libblas
+        - liblapack
+        - openmpi  # [unix]
+    test:
+      commands:
+        - test -f ${PREFIX}/lib/libarpack.a  # [unix]
+        - test -f ${PREFIX}/lib/libparpack.a  # [unix]
+        - test -f ${PREFIX}/lib/libarpack${SHLIB_EXT}  # [unix]
+        - test -f ${PREFIX}/lib/libparpack${SHLIB_EXT}  # [unix]
+        - test -f ${PREFIX}/include/arpack/arpack.hpp  # [unix]
 
 about:
   home: https://github.com/opencollab/arpack-ng
@@ -48,3 +79,4 @@ about:
 extra:
   recipe-maintainers:
     - jschueller
+    - mrakitin

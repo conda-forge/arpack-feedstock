@@ -3,6 +3,7 @@
 set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
 set PATH=%PATH:C:\Program Files\Git\bin;=%
 
+rm -rfv build
 mkdir build && cd build
 
 :: Static build - configure.
