@@ -72,7 +72,7 @@ outputs:
 
 about:
   home: https://github.com/opencollab/arpack-ng
-  license: BSD 3-Clause
+  license: BSD-3-Clause
   license_file: COPYING
   summary: Fortran77 subroutines designed to solve large scale eigenvalue problems
 
