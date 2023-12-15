@@ -36,8 +36,8 @@ build:
   run_exports:
     - {{ pin_subpackage('arpack', max_pin='x.x') }} {{ mpi_prefix }}_*
   script_env:
-    - DMPI=ON # [mpi != 'nompi']
-    - DMPI=OFF # [mpi == 'nompi']
+    - DMPI=ON  # [mpi != 'nompi']
+    - DMPI=OFF  # [mpi == 'nompi']
 
 requirements:
   build:
