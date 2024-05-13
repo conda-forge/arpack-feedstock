@@ -16,8 +16,18 @@ if [[ $mpi == "openmpi" ]]; then
   export OMPI_MCA_btl=tcp,self
   export OMPI_MCA_btl_vader_single_copy_mechanism=none
 
-  export OPAL_CC=$CC
-  export OPAL_PREFIX=$PREFIX
+  if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
+    export OMPI_CC=$CC
+    export OMPI_CXX=$CXX
+    export OMPI_FC=$FC
+
+    export CC=mpicc
+    export CXX=mpic++
+    export F77=mpifort
+    export FC=mpifort
+
+    export OPAL_PREFIX=$PREFIX
+  fi
 fi  
 
 cmake ${CMAKE_ARGS} \
