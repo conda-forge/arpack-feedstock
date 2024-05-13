@@ -15,7 +15,8 @@ if [[ $mpi == "openmpi" ]]; then
   export OMPI_MCA_plm=isolated
   export OMPI_MCA_btl=tcp,self
   export OMPI_MCA_btl_vader_single_copy_mechanism=none
-  export OMPI_CC=$CC
+
+  export OPAL_CC=$CC
   export OPAL_PREFIX=$PREFIX
 fi  
 
