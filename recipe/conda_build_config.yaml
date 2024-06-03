@@ -1,3 +1,5 @@
+c_stdlib:
+  - 2.17  # [linux64]
 mpi:
   - nompi
   - mpich    # [not win]
