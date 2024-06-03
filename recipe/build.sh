@@ -13,7 +13,7 @@ if [[ $mpi == "openmpi" ]]; then
   export OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1
   export OMPI_MCA_rmaps_base_oversubscribe=1
   export OMPI_MCA_plm=isolated
-  export OMPI_MCA_btl=tcp,self
+  export OMPI_MCA_btl=vader,self
   export OMPI_MCA_btl_vader_single_copy_mechanism=none
 
   if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
