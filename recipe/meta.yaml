@@ -42,7 +42,7 @@ build:
 requirements:
   build:
     - cmake
-    - make  # [unix]
+    - make
     - {{ compiler('fortran') }}  # [unix]
     - {{ compiler('c') }}  # [unix]
     - {{ stdlib('c') }}  # [unix]
