@@ -268,5 +268,6 @@ Feedstock Maintainers
 =====================
 
 * [@jschueller](https://github.com/jschueller/)
+* [@krande](https://github.com/krande/)
 * [@mrakitin](https://github.com/mrakitin/)
 
